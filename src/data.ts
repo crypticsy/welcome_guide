@@ -104,6 +104,9 @@ export const categories: Category[] = [
     label: 'Stay',
     icon: 'accommodation',
     color: '#b07d3a',
-    locations: rawData.accommodations.map((l, i) => ({ ...l, coords: accommodationCoords[i] })),
+    // SpareRoom (id 17, index 16) and Booking.com (id 19, index 18) are web links — no map pin
+    locations: rawData.accommodations
+      .map((l, i) => i === 16 || i === 18 ? { ...l } : { ...l, coords: accommodationCoords[i] })
+      .sort((a, b) => (a.coords ? 0 : 1) - (b.coords ? 0 : 1)),
   },
 ]

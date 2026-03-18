@@ -72,6 +72,83 @@ interface RowProps {
 }
 
 function LocationRow({ loc, isSelected, color, onSelect }: RowProps) {
+  // Link-only entries (no coords) open the URL directly instead of selecting a map pin
+  if (!loc.coords) {
+    return (
+      <a
+        href={loc.location}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'block',
+          padding: '14px 14px',
+          borderRadius: 'var(--radius)',
+          marginBottom: 4,
+          background: 'transparent',
+          border: '1.5px solid var(--border)',
+          textDecoration: 'none',
+          transition: 'all var(--transition)',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'var(--bg-surface)'
+          e.currentTarget.style.borderColor = `${color}50`
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'transparent'
+          e.currentTarget.style.borderColor = 'var(--border)'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+          <div
+            style={{
+              width: 28,
+              height: 28,
+              borderRadius: '50%',
+              background: `${color}12`,
+              border: `1.5px solid ${color}35`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+              marginTop: 1,
+            }}
+          >
+            <TbExternalLink size={13} strokeWidth={2} style={{ color }} />
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 14,
+              color: 'var(--text)',
+              lineHeight: 1.35,
+              marginBottom: 3,
+            }}>
+              {loc.name}
+            </div>
+            <div style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 11,
+              fontWeight: 400,
+              color: color,
+              marginBottom: 6,
+            }}>
+              {loc.type}
+            </div>
+            <div style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 12,
+              color: 'var(--text-2)',
+              lineHeight: 1.55,
+            }}>
+              {loc.description}
+            </div>
+          </div>
+          <TbExternalLink size={14} strokeWidth={2} style={{ color, flexShrink: 0, marginTop: 2 }} />
+        </div>
+      </a>
+    )
+  }
+
   return (
     <div
       onClick={() => onSelect(loc)}
