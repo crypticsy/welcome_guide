@@ -26,8 +26,16 @@ interface Props {
 }
 
 export default function CategoryTabs({ categories, active, onChange }: Props) {
+  function handleWheel(e: React.WheelEvent<HTMLDivElement>) {
+    if (e.deltaY !== 0) {
+      e.preventDefault()
+      e.currentTarget.scrollLeft += e.deltaY
+    }
+  }
+
   return (
     <div
+      onWheel={handleWheel}
       style={{
         display: 'flex',
         gap: 6,
