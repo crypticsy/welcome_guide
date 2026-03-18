@@ -127,7 +127,7 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
         />
 
         {/* Location markers */}
-        {category.locations.map((loc) => {
+        {category.locations.map((loc, idx) => {
           if (!loc.coords) return null
           const isSel = selectedLocation?.id === loc.id
           const dist  = haversineKm(OFFICE.coords, loc.coords)
@@ -135,7 +135,7 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
             <Marker
               key={`${category.key}-${loc.id}`}
               position={loc.coords}
-              icon={createMarkerIcon(category.color, loc.id, isSel)}
+              icon={createMarkerIcon(category.color, idx + 1, isSel)}
               zIndexOffset={isSel ? 1000 : 0}
               ref={(m) => {
                 if (m) markerRefs.current.set(loc.id, m)

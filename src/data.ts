@@ -1,5 +1,15 @@
 import type { Category } from './types'
 import rawData from './data/places.json'
+import { haversineKm } from './utils/distance'
+import { OFFICE } from './constants'
+
+function sortByDistance<T extends { coords?: [number, number] }>(locations: T[]): T[] {
+  return locations.slice().sort((a, b) => {
+    if (!a.coords) return 1
+    if (!b.coords) return -1
+    return haversineKm(OFFICE.coords, a.coords) - haversineKm(OFFICE.coords, b.coords)
+  })
+}
 
 // Approximate coordinates spread around Halifax, UK (centre: 53.7212, -1.8584)
 const restaurantCoords: [number, number][] = [
@@ -62,42 +72,42 @@ export const categories: Category[] = [
     label: 'Restaurants',
     icon: 'restaurant',
     color: '#e05a2b',
-    locations: rawData.restaurants.map((l, i) => ({ ...l, coords: restaurantCoords[i] })),
+    locations: sortByDistance(rawData.restaurants.map((l, i) => ({ ...l, coords: restaurantCoords[i] }))),
   },
   {
     key: 'medical_facilities',
     label: 'Medical',
     icon: 'medical',
     color: '#e30413',
-    locations: rawData.medical_facilities.map((l, i) => ({ ...l, coords: medicalCoords[i] })),
+    locations: sortByDistance(rawData.medical_facilities.map((l, i) => ({ ...l, coords: medicalCoords[i] }))),
   },
   {
     key: 'things_to_do',
     label: 'Attractions',
     icon: 'attraction',
     color: '#c4916c',
-    locations: rawData.things_to_do.map((l, i) => ({ ...l, coords: attractionCoords[i] })),
+    locations: sortByDistance(rawData.things_to_do.map((l, i) => ({ ...l, coords: attractionCoords[i] }))),
   },
   {
     key: 'garages',
     label: 'Garages',
     icon: 'garage',
     color: '#3d8fad',
-    locations: rawData.garages.map((l, i) => ({ ...l, coords: garageCoords[i] })),
+    locations: sortByDistance(rawData.garages.map((l, i) => ({ ...l, coords: garageCoords[i] }))),
   },
   {
     key: 'fuel_stations',
     label: 'Fuel',
     icon: 'fuel',
     color: '#5a9a3a',
-    locations: rawData.fuel_stations.map((l, i) => ({ ...l, coords: fuelCoords[i] })),
+    locations: sortByDistance(rawData.fuel_stations.map((l, i) => ({ ...l, coords: fuelCoords[i] }))),
   },
   {
     key: 'local_shops',
     label: 'Shops',
     icon: 'shop',
     color: '#8a5fad',
-    locations: rawData.local_shops.map((l, i) => ({ ...l, coords: shopCoords[i] })),
+    locations: sortByDistance(rawData.local_shops.map((l, i) => ({ ...l, coords: shopCoords[i] }))),
   },
   {
     key: 'accommodations',
@@ -105,8 +115,8 @@ export const categories: Category[] = [
     icon: 'accommodation',
     color: '#b07d3a',
     // SpareRoom (id 17, index 16) and Booking.com (id 19, index 18) are web links — no map pin
-    locations: rawData.accommodations
-      .map((l, i) => i === 16 || i === 18 ? { ...l } : { ...l, coords: accommodationCoords[i] })
-      .sort((a, b) => ('coords' in a ? 0 : 1) - ('coords' in b ? 0 : 1)),
+    locations: sortByDistance(
+      rawData.accommodations.map((l, i) => i === 16 || i === 18 ? { ...l } : { ...l, coords: accommodationCoords[i] })
+    ),
   },
 ]

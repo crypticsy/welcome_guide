@@ -53,6 +53,7 @@ export default function LocationList({ category, selectedId, onSelect }: Props) 
           >
             <LocationRow
               loc={loc}
+              rank={idx + 1}
               isSelected={loc.id === selectedId}
               color={category.color}
               onSelect={onSelect}
@@ -66,12 +67,13 @@ export default function LocationList({ category, selectedId, onSelect }: Props) 
 
 interface RowProps {
   loc: Location
+  rank: number
   isSelected: boolean
   color: string
   onSelect: (loc: Location) => void
 }
 
-function LocationRow({ loc, isSelected, color, onSelect }: RowProps) {
+function LocationRow({ loc, rank, isSelected, color, onSelect }: RowProps) {
   // Link-only entries (no coords) open the URL directly instead of selecting a map pin
   if (!loc.coords) {
     return (
@@ -202,7 +204,7 @@ function LocationRow({ loc, isSelected, color, onSelect }: RowProps) {
               lineHeight: 1,
             }}
           >
-            {loc.id}
+            {rank}
           </span>
         </div>
 
