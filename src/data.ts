@@ -107,6 +107,6 @@ export const categories: Category[] = [
     // SpareRoom (id 17, index 16) and Booking.com (id 19, index 18) are web links — no map pin
     locations: rawData.accommodations
       .map((l, i) => i === 16 || i === 18 ? { ...l } : { ...l, coords: accommodationCoords[i] })
-      .sort((a, b) => (a.coords ? 0 : 1) - (b.coords ? 0 : 1)),
+      .sort((a, b) => ('coords' in a ? 0 : 1) - ('coords' in b ? 0 : 1)),
   },
 ]
