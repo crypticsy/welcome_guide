@@ -1,3 +1,6 @@
+# GitHub workflows (managed manually)
+.github/
+
 # Dependencies
 node_modules/
 
