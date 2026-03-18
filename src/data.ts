@@ -1,9 +1,9 @@
-import type { Category } from './types'
+import type { Category, Location } from './types'
 import rawData from './data/places.json'
 import { haversineKm } from './utils/distance'
 import { OFFICE } from './constants'
 
-function sortByDistance<T extends { coords?: [number, number] }>(locations: T[]): T[] {
+function sortByDistance(locations: Location[]): Location[] {
   return locations.slice().sort((a, b) => {
     if (!a.coords) return 1
     if (!b.coords) return -1
