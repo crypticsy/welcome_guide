@@ -36,8 +36,8 @@ function createMarkerIcon(color: string, index: number, isSelected: boolean): L.
         font-family:'Century Gothic',CenturyGothic,AppleGothic,sans-serif;line-height:1;display:block;">${index}</span>
     </div>`,
     iconSize:    [size, size],
-    iconAnchor:  [size / 2, size],
-    popupAnchor: [0, -(size + 6)],
+    iconAnchor:  [Math.round(size / 2), Math.round(size * 1.207)],
+    popupAnchor: [0, -Math.round(size * 1.414 + 8)],
   })
 }
 
@@ -104,7 +104,7 @@ function MapController({
       prevSelectedId.current = selectedLocation.id
       cancelPending()
       map.closePopup()
-      map.setView(selectedLocation.coords, 15, { animate: true, duration: 0.4 })
+      map.setView(selectedLocation.coords, 17, { animate: true, duration: 0.4 })
       const targetId = selectedLocation.id
       const handler = () => {
         pendingHandler.current = null
@@ -308,7 +308,7 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
               <span style="transform:rotate(45deg);color:#ffe900;font-size:13px;
                 font-weight:700;font-family:'DM Sans',sans-serif;line-height:1;">⚑</span>
             </div>`,
-            iconSize: [38, 38], iconAnchor: [19, 38], popupAnchor: [0, -42],
+            iconSize: [38, 38], iconAnchor: [19, 46], popupAnchor: [0, -62],
           })}
           zIndexOffset={2000}
         >
