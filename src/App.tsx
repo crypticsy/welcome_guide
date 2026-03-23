@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { TbChevronUp, TbChevronDown } from 'react-icons/tb'
-import Header from './components/Header'
 import CategoryTabs from './components/CategoryTabs'
 import LocationList from './components/LocationList'
 import MapView from './components/MapView'
@@ -30,88 +29,83 @@ export default function App() {
   /* ── Desktop layout ── */
   if (!isMobile) {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', overflow: 'hidden' }}>
-        <Header />
-        <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
-          {/* Sidebar */}
-          <div
-            style={{
-              width: 'var(--sidebar-w)',
-              flexShrink: 0,
-              background: 'var(--bg-card)',
-              borderRight: '1px solid var(--border)',
-              display: 'flex',
-              flexDirection: 'column',
-              overflow: 'hidden',
-            }}
-          >
-            <div style={{ padding: '18px 24px 0', flexShrink: 0 }}>
-              <p style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: 10,
-                fontWeight: 500,
-                color: 'var(--text-4)',
-                letterSpacing: '1.2px',
-                textTransform: 'uppercase',
-              }}>
-                Explore by category
-              </p>
-            </div>
-
-            <CategoryTabs
-              categories={categories}
-              active={activeCategoryKey}
-              onChange={handleCategoryChange}
-            />
-
-            <LocationList
-              category={activeCategory}
-              selectedId={selectedLocation?.id ?? null}
-              onSelect={handleLocationSelect}
-            />
-
-            <div style={{
-              padding: '12px 24px',
-              borderTop: '1px solid var(--border)',
-              background: 'var(--bg-ghost)',
-              flexShrink: 0,
+      <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
+        {/* Sidebar */}
+        <div
+          style={{
+            width: 'var(--sidebar-w)',
+            flexShrink: 0,
+            background: 'var(--bg-card)',
+            borderRight: '1px solid var(--border)',
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden',
+          }}
+        >
+          {/* Section label */}
+          <div style={{ padding: '16px 20px 0', flexShrink: 0 }}>
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 10,
+              fontWeight: 500,
+              color: 'var(--text-4)',
+              letterSpacing: '1.2px',
+              textTransform: 'uppercase',
             }}>
-              <p style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: 10,
-                fontWeight: 400,
-                color: 'var(--text-4)',
-                textAlign: 'center',
-                lineHeight: 1.6,
-              }}>
-                Select a location to highlight on the map
-                <br />
-                Use ↗ to open directly in Google Maps
-              </p>
-            </div>
+              Explore by category
+            </p>
           </div>
 
-          <MapView
-            category={activeCategory}
-            selectedLocation={selectedLocation}
-            onMarkerClick={handleLocationSelect}
+          <CategoryTabs
+            categories={categories}
+            active={activeCategoryKey}
+            onChange={handleCategoryChange}
           />
+
+          <LocationList
+            category={activeCategory}
+            selectedId={selectedLocation?.id ?? null}
+            onSelect={handleLocationSelect}
+          />
+
+          <div style={{
+            padding: '12px 24px',
+            borderTop: '1px solid var(--border)',
+            background: 'var(--bg-ghost)',
+            flexShrink: 0,
+          }}>
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 10,
+              fontWeight: 400,
+              color: 'var(--text-4)',
+              textAlign: 'center',
+              lineHeight: 1.6,
+            }}>
+              Select a location to highlight on the map
+              <br />
+              Use ↗ to open directly in Google Maps
+            </p>
+          </div>
         </div>
+
+        <MapView
+          category={activeCategory}
+          selectedLocation={selectedLocation}
+          onMarkerClick={handleLocationSelect}
+        />
       </div>
     )
   }
 
   /* ── Mobile layout ── */
-  const SHEET_COLLAPSED_H = 172 // tabs + handle + eyebrow
+  const SHEET_COLLAPSED_H = 158
   const SHEET_EXPANDED_H  = '72vh'
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100dvh', overflow: 'hidden' }}>
-      <Header />
-
-      {/* Relative container below the header — map + sheet live here */}
+      {/* Map fills full screen */}
       <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
-        {/* Map: absolute fill of this container */}
         <div style={{ position: 'absolute', inset: 0 }}>
           <MapView
             category={activeCategory}
@@ -140,42 +134,46 @@ export default function App() {
             overflow: 'hidden',
           }}
         >
-          {/* Drag handle + toggle */}
+          {/* Drag handle */}
           <div
             onClick={() => setSheetExpanded((v) => !v)}
             style={{
               display: 'flex',
-              flexDirection: 'column',
               alignItems: 'center',
-              padding: '10px 20px 6px',
+              justifyContent: 'space-between',
+              padding: '10px 18px 8px',
               cursor: 'pointer',
               flexShrink: 0,
               userSelect: 'none',
               WebkitUserSelect: 'none',
             }}
           >
-            <div style={{
-              width: 36,
-              height: 4,
-              borderRadius: 2,
-              background: 'var(--border-2)',
-              marginBottom: 8,
-            }} />
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-              <p style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: 10,
-                fontWeight: 500,
-                color: 'var(--text-4)',
-                letterSpacing: '1.2px',
-                textTransform: 'uppercase',
-              }}>
-                Explore by category
-              </p>
-              <span style={{ color: 'var(--text-3)' }}>
+            {/* Active category pill */}
+            <span style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 11,
+              fontWeight: 600,
+              color: activeCategory.color,
+              background: `${activeCategory.color}12`,
+              border: `1px solid ${activeCategory.color}30`,
+              borderRadius: 99,
+              padding: '3px 10px',
+            }}>
+              {activeCategory.label}
+            </span>
+
+            {/* Drag pill + chevron */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{
+                width: 28,
+                height: 3,
+                borderRadius: 2,
+                background: 'var(--border-2)',
+              }} />
+              <span style={{ color: 'var(--text-3)', display: 'flex' }}>
                 {sheetExpanded
-                  ? <TbChevronDown size={16} strokeWidth={2} />
-                  : <TbChevronUp   size={16} strokeWidth={2} />}
+                  ? <TbChevronDown size={15} strokeWidth={2} />
+                  : <TbChevronUp   size={15} strokeWidth={2} />}
               </span>
             </div>
           </div>

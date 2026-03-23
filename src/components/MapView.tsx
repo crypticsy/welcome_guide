@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, Circle, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import type { Category, Location } from '../types'
@@ -13,7 +13,6 @@ L.Icon.Default.mergeOptions({
   shadowUrl:     'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 })
 
-const HALIFAX_CENTER: [number, number] = [53.7212, -1.8584]
 const SELECTED_COLOR = '#e30413'
 
 function createMarkerIcon(color: string, index: number, isSelected: boolean): L.DivIcon {
@@ -34,12 +33,29 @@ function createMarkerIcon(color: string, index: number, isSelected: boolean): L.
       transform:rotate(-45deg);
       display:flex;align-items:center;justify-content:center;">
       <span style="transform:rotate(45deg);color:white;font-size:${font}px;font-weight:600;
-        font-family:'DM Sans',system-ui,sans-serif;line-height:1;display:block;">${index}</span>
+        font-family:'Century Gothic',CenturyGothic,AppleGothic,sans-serif;line-height:1;display:block;">${index}</span>
     </div>`,
     iconSize:    [size, size],
     iconAnchor:  [size / 2, size],
     popupAnchor: [0, -(size + 6)],
   })
+}
+
+// Permanently disables all map interaction — users can only click markers
+function MapLock() {
+  const map = useMap()
+  useEffect(() => {
+    map.dragging.disable()
+    map.scrollWheelZoom.disable()
+    map.doubleClickZoom.disable()
+    map.touchZoom.disable()
+    map.boxZoom.disable()
+    map.keyboard.disable()
+    if ((map as unknown as Record<string, unknown>).tap) {
+      (map as unknown as Record<string, { disable(): void }>).tap.disable()
+    }
+  }, [map])
+  return null
 }
 
 // Controls map viewport and opens popup when a location is selected from the sidebar
@@ -54,37 +70,55 @@ function MapController({
   selectedLocation: Location | null
   markerRefs: React.RefObject<Map<number, L.Marker>>
 }) {
-  const map             = useMap()
-  const prevCategoryRef = useRef<string>('')
-  const prevSelectedId  = useRef<number | null>(null)
+  const map              = useMap()
+  const prevCategoryRef  = useRef<string>('')
+  const prevSelectedId   = useRef<number | null>(null)
+  const pendingHandler   = useRef<(() => void) | null>(null)
+
+  function cancelPending() {
+    if (pendingHandler.current) {
+      map.off('moveend', pendingHandler.current)
+      pendingHandler.current = null
+    }
+  }
+
+  function fitAll(coords: [number, number][]) {
+    const bounds = L.latLngBounds([...coords, OFFICE.coords])
+    map.setView(bounds.getCenter(), map.getBoundsZoom(bounds, false, L.point(48, 48)), { animate: true, duration: 0.4 })
+  }
 
   // Fit all markers when category changes
   useEffect(() => {
     if (categoryKey !== prevCategoryRef.current) {
       prevCategoryRef.current = categoryKey
       prevSelectedId.current  = null
-      if (allCoords.length > 0) {
-        map.flyToBounds(L.latLngBounds(allCoords), { padding: [48, 48], duration: 0.7, maxZoom: 15 })
-      }
+      cancelPending()
+      map.closePopup()
+      if (allCoords.length > 0) fitAll(allCoords)
     }
   }, [categoryKey, allCoords, map])
 
-  // Fly to selected + open its popup
+  // Navigate to selected location + open its popup
   useEffect(() => {
     if (selectedLocation?.coords && selectedLocation.id !== prevSelectedId.current) {
       prevSelectedId.current = selectedLocation.id
-      map.flyTo(selectedLocation.coords, 16, { duration: 0.7 })
-      // Open popup after flyTo animation
-      setTimeout(() => {
-        const marker = markerRefs.current?.get(selectedLocation.id)
-        marker?.openPopup()
-      }, 750)
+      cancelPending()
+      map.closePopup()
+      map.setView(selectedLocation.coords, 15, { animate: true, duration: 0.4 })
+      const targetId = selectedLocation.id
+      const handler = () => {
+        pendingHandler.current = null
+        if (prevSelectedId.current === targetId) {
+          markerRefs.current?.get(targetId)?.openPopup()
+        }
+      }
+      pendingHandler.current = handler
+      map.once('moveend', handler)
     } else if (!selectedLocation && prevSelectedId.current !== null) {
       prevSelectedId.current = null
+      cancelPending()
       map.closePopup()
-      if (allCoords.length > 0) {
-        map.flyToBounds(L.latLngBounds(allCoords), { padding: [48, 48], duration: 0.7, maxZoom: 15 })
-      }
+      if (allCoords.length > 0) fitAll(allCoords)
     }
   }, [selectedLocation, allCoords, map, markerRefs])
 
@@ -109,14 +143,36 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
   return (
     <div style={{ flex: 1, height: '100%', position: 'relative', overflow: 'hidden' }}>
       <MapContainer
-        center={HALIFAX_CENTER}
+        center={OFFICE.coords}
         zoom={13}
         style={{ height: '100%', width: '100%' }}
-        zoomControl={true}
+        zoomControl={false}
+        dragging={false}
+        scrollWheelZoom={false}
+        doubleClickZoom={false}
+        touchZoom={false}
+        boxZoom={false}
+        keyboard={false}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+        />
+
+        <MapLock />
+
+        {/* CRH / Site Office boundary */}
+        <Circle
+          center={OFFICE.coords}
+          radius={220}
+          pathOptions={{
+            color: '#ffe900',
+            weight: 2.5,
+            opacity: 0.9,
+            fillColor: '#ffe900',
+            fillOpacity: 0.06,
+            dashArray: '6 4',
+          }}
         />
 
         <MapController
@@ -144,12 +200,12 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
               eventHandlers={{ click: () => onMarkerClick(loc) }}
             >
               <Popup minWidth={240} maxWidth={300}>
-                <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", padding: '18px 20px 16px' }}>
+                <div style={{ fontFamily: "'Century Gothic', CenturyGothic, AppleGothic, sans-serif", padding: '18px 20px 16px' }}>
 
                   {/* Type pill */}
                   <span style={{
                     display: 'inline-block',
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Century Gothic', CenturyGothic, AppleGothic, sans-serif",
                     fontSize: 9.5, fontWeight: 600, letterSpacing: '0.8px',
                     textTransform: 'uppercase' as const,
                     color: category.color, background: `${category.color}12`,
@@ -161,7 +217,7 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
 
                   {/* Name */}
                   <div style={{
-                    fontFamily: "'DM Serif Display', Georgia, serif",
+                    fontFamily: "'Century Gothic', CenturyGothic, AppleGothic, sans-serif",
                     fontSize: 15, color: '#1c1510', lineHeight: 1.3, marginBottom: 6,
                   }}>
                     {loc.name}
@@ -176,7 +232,7 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
                   <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 4, marginBottom: 12 }}>
                     {loc.tags.map((tag) => (
                       <span key={tag} style={{
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Century Gothic', CenturyGothic, AppleGothic, sans-serif",
                         fontSize: 10, fontWeight: 500, color: '#8b7d6e',
                         background: '#f5ede0', border: '1px solid #e2d5c3',
                         borderRadius: 99, padding: '2px 8px',
@@ -204,7 +260,7 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
                       rel="noopener noreferrer"
                       style={{
                         display: 'inline-flex', alignItems: 'center', gap: 4,
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Century Gothic', CenturyGothic, AppleGothic, sans-serif",
                         fontSize: 10.5, fontWeight: 600,
                         color: category.color, textDecoration: 'none',
                         padding: '4px 9px', borderRadius: 99,
@@ -224,7 +280,7 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
                     rel="noopener noreferrer"
                     style={{
                       display: 'inline-flex', alignItems: 'center', gap: 5,
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "'Century Gothic', CenturyGothic, AppleGothic, sans-serif",
                       fontSize: 11.5, fontWeight: 600, color: category.color,
                       textDecoration: 'none', padding: '7px 14px', borderRadius: 99,
                       border: `1.5px solid ${category.color}35`,
@@ -257,7 +313,7 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
           zIndexOffset={2000}
         >
           <Popup minWidth={200}>
-            <div style={{ fontFamily: "'DM Sans', sans-serif", padding: '14px 16px' }}>
+            <div style={{ fontFamily: "'Century Gothic', CenturyGothic, AppleGothic, sans-serif", padding: '14px 16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
                 <div style={{
                   width: 28, height: 28, borderRadius: 6, flexShrink: 0,
@@ -271,7 +327,7 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
                     Site Office
                   </div>
                   <div style={{ fontSize: 10, color: '#8b7d6e', fontWeight: 500, marginTop: 1 }}>
-                    Laing O'Rourke — Advanced Works
+                    Calderdale Royal Hospital
                   </div>
                 </div>
               </div>
@@ -281,7 +337,7 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
                 rel="noopener noreferrer"
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 5,
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,
+                  fontFamily: "'Century Gothic', CenturyGothic, AppleGothic, sans-serif", fontSize: 11, fontWeight: 600,
                   color: '#1c1510', textDecoration: 'none',
                   padding: '6px 12px', borderRadius: 99,
                   border: '1.5px solid #000', background: '#ffe90018',
@@ -304,11 +360,11 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
         display: 'flex', alignItems: 'center', gap: 10,
         pointerEvents: 'none' as const, whiteSpace: 'nowrap' as const,
       }}>
-        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 500, color: '#5c4f44' }}>
+        <span style={{ fontFamily: "'Century Gothic', CenturyGothic, AppleGothic, sans-serif", fontSize: 11, fontWeight: 500, color: '#5c4f44' }}>
           {category.label}
         </span>
         <span style={{ width: 1, height: 12, background: '#e2d5c3' }} />
-        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600, color: category.color }}>
+        <span style={{ fontFamily: "'Century Gothic', CenturyGothic, AppleGothic, sans-serif", fontSize: 11, fontWeight: 600, color: category.color }}>
           {category.locations.length} locations
         </span>
       </div>

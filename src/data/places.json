@@ -25,18 +25,6 @@
       ]
     },
     {
-      "id": 3,
-      "name": "Ingleton Falls Restaurant (Inside CRH)",
-      "location": "https://maps.app.goo.gl/dg7Ht9tZuhWjzg1bA",
-      "type": "British",
-      "description": "Hospital café-restaurant serving hot meals and light bites inside Calderdale Royal Hospital.",
-      "tags": [
-        "Café",
-        "British",
-        "Hospital"
-      ]
-    },
-    {
       "id": 4,
       "name": "Get Loaded",
       "location": "https://maps.app.goo.gl/tj1i9dm2ZZGhsdeFA",
@@ -1309,6 +1297,30 @@
   ],
   "accommodations": [
     {
+      "id": 17,
+      "name": "SpareRoom – Halifax Flatshares",
+      "location": "https://www.spareroom.co.uk/flatshare/halifax",
+      "type": "Room Rental",
+      "description": "Search available rooms, flatshares and house shares for rent across Halifax and the surrounding area.",
+      "tags": [
+        "Room Rental",
+        "Flatshare",
+        "Long Stay"
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Booking.com – Halifax Hotels",
+      "location": "https://www.booking.com/searchresults/en-gb/region/gb/halifax.html",
+      "type": "Online Search",
+      "description": "Browse and compare all available hotels, B&Bs and serviced apartments in Halifax on Booking.com.",
+      "tags": [
+        "Booking.com",
+        "Compare",
+        "All Types"
+      ]
+    },
+    {
       "id": 1,
       "name": "Premier Inn Huddersfield North",
       "location": "https://maps.app.goo.gl/vir7mw4dLLK3DeMs8",
@@ -1501,18 +1513,6 @@
       ]
     },
     {
-      "id": 17,
-      "name": "SpareRoom – Halifax Flatshares",
-      "location": "https://www.spareroom.co.uk/flatshare/halifax",
-      "type": "Room Rental",
-      "description": "Search available rooms, flatshares and house shares for rent across Halifax and the surrounding area.",
-      "tags": [
-        "Room Rental",
-        "Flatshare",
-        "Long Stay"
-      ]
-    },
-    {
       "id": 18,
       "name": "Holiday Inn Leeds–Brighouse",
       "location": "https://maps.app.goo.gl/BiH3ZNenfCxKHgfD8",
@@ -1522,18 +1522,6 @@
         "Holiday Inn",
         "Pool & Gym",
         "Brighouse"
-      ]
-    },
-    {
-      "id": 19,
-      "name": "Booking.com – Halifax Hotels",
-      "location": "https://www.booking.com/searchresults/en-gb/region/gb/halifax.html",
-      "type": "Online Search",
-      "description": "Browse and compare all available hotels, B&Bs and serviced apartments in Halifax on Booking.com.",
-      "tags": [
-        "Booking.com",
-        "Compare",
-        "All Types"
       ]
     }
   ]

@@ -5,8 +5,8 @@ import { OFFICE } from './constants'
 
 function sortByDistance(locations: Location[]): Location[] {
   return locations.slice().sort((a, b) => {
-    if (!a.coords) return 1
-    if (!b.coords) return -1
+    if (!a.coords) return -1
+    if (!b.coords) return 1
     return haversineKm(OFFICE.coords, a.coords) - haversineKm(OFFICE.coords, b.coords)
   })
 }
@@ -68,6 +68,16 @@ const attractionCoords: [number, number][] = [
 
 export const categories: Category[] = [
   {
+    key: 'accommodations',
+    label: 'Stay',
+    icon: 'accommodation',
+    color: '#b07d3a',
+    // SpareRoom (index 0) and Booking.com (index 1) are web links — no map pin
+    locations: sortByDistance(
+      rawData.accommodations.map((l, i) => i === 0 || i === 1 ? { ...l } : { ...l, coords: accommodationCoords[i <= 17 ? i - 2 : 17] })
+    ),
+  },
+  {
     key: 'restaurants',
     label: 'Restaurants',
     icon: 'restaurant',
@@ -89,13 +99,6 @@ export const categories: Category[] = [
     locations: sortByDistance(rawData.things_to_do.map((l, i) => ({ ...l, coords: attractionCoords[i] }))),
   },
   {
-    key: 'garages',
-    label: 'Garages',
-    icon: 'garage',
-    color: '#3d8fad',
-    locations: sortByDistance(rawData.garages.map((l, i) => ({ ...l, coords: garageCoords[i] }))),
-  },
-  {
     key: 'fuel_stations',
     label: 'Fuel',
     icon: 'fuel',
@@ -110,13 +113,10 @@ export const categories: Category[] = [
     locations: sortByDistance(rawData.local_shops.map((l, i) => ({ ...l, coords: shopCoords[i] }))),
   },
   {
-    key: 'accommodations',
-    label: 'Stay',
-    icon: 'accommodation',
-    color: '#b07d3a',
-    // SpareRoom (id 17, index 16) and Booking.com (id 19, index 18) are web links — no map pin
-    locations: sortByDistance(
-      rawData.accommodations.map((l, i) => i === 16 || i === 18 ? { ...l } : { ...l, coords: accommodationCoords[i] })
-    ),
+    key: 'garages',
+    label: 'Garages',
+    icon: 'garage',
+    color: '#3d8fad',
+    locations: sortByDistance(rawData.garages.map((l, i) => ({ ...l, coords: garageCoords[i] }))),
   },
 ]

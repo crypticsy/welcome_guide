@@ -10,13 +10,13 @@ import {
 import type { Category } from '../types'
 
 const iconMap: Record<string, React.ReactNode> = {
-  restaurant:    <TbToolsKitchen2    size={15} strokeWidth={1.8} />,
-  medical:       <TbHeartbeat        size={15} strokeWidth={1.8} />,
-  attraction:    <TbBuildingMonument size={15} strokeWidth={1.8} />,
-  garage:        <TbCar              size={15} strokeWidth={1.8} />,
-  fuel:          <TbGasStation       size={15} strokeWidth={1.8} />,
-  shop:          <TbShoppingBag      size={15} strokeWidth={1.8} />,
-  accommodation: <TbBed              size={15} strokeWidth={1.8} />,
+  restaurant:    <TbToolsKitchen2    size={16} strokeWidth={1.8} />,
+  medical:       <TbHeartbeat        size={16} strokeWidth={1.8} />,
+  attraction:    <TbBuildingMonument size={16} strokeWidth={1.8} />,
+  garage:        <TbCar              size={16} strokeWidth={1.8} />,
+  fuel:          <TbGasStation       size={16} strokeWidth={1.8} />,
+  shop:          <TbShoppingBag      size={16} strokeWidth={1.8} />,
+  accommodation: <TbBed              size={16} strokeWidth={1.8} />,
 }
 
 interface Props {
@@ -26,26 +26,16 @@ interface Props {
 }
 
 export default function CategoryTabs({ categories, active, onChange }: Props) {
-  function handleWheel(e: React.WheelEvent<HTMLDivElement>) {
-    if (e.deltaY !== 0) {
-      e.preventDefault()
-      e.currentTarget.scrollLeft += e.deltaY
-    }
-  }
-
   return (
     <div
-      onWheel={handleWheel}
       style={{
-        display: 'flex',
-        gap: 6,
-        padding: '10px 14px',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(4, 1fr)',
+        gap: 4,
+        padding: '8px 12px',
         borderBottom: '1px solid var(--border)',
-        overflowX: 'auto',
         flexShrink: 0,
-        scrollbarWidth: 'none',
-        WebkitOverflowScrolling: 'touch',
-      } as React.CSSProperties}
+      }}
     >
       {categories.map((cat) => {
         const isActive = cat.key === active
@@ -55,19 +45,21 @@ export default function CategoryTabs({ categories, active, onChange }: Props) {
             onClick={() => onChange(cat.key)}
             style={{
               display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
-              gap: 6,
-              padding: '7px 12px',
-              borderRadius: 99,
+              justifyContent: 'center',
+              gap: 4,
+              padding: '8px 4px',
+              borderRadius: 8,
               border: isActive
                 ? `1.5px solid ${cat.color}55`
-                : '1.5px solid var(--border)',
+                : '1.5px solid transparent',
               background: isActive ? `${cat.color}10` : 'transparent',
               cursor: 'pointer',
               color: isActive ? cat.color : 'var(--text-3)',
-              flexShrink: 0,
               transition: 'all var(--transition)',
-              whiteSpace: 'nowrap',
+              width: '100%',
+              minWidth: 0,
             }}
             onMouseEnter={(e) => {
               if (!isActive) {
@@ -79,7 +71,7 @@ export default function CategoryTabs({ categories, active, onChange }: Props) {
             onMouseLeave={(e) => {
               if (!isActive) {
                 e.currentTarget.style.background = 'transparent'
-                e.currentTarget.style.borderColor = 'var(--border)'
+                e.currentTarget.style.borderColor = 'transparent'
                 e.currentTarget.style.color = 'var(--text-3)'
               }
             }}
@@ -88,9 +80,14 @@ export default function CategoryTabs({ categories, active, onChange }: Props) {
             <span
               style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: 11,
+                fontSize: 10,
                 fontWeight: isActive ? 600 : 400,
                 lineHeight: 1,
+                textAlign: 'center',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+                width: '100%',
               }}
             >
               {cat.label}
