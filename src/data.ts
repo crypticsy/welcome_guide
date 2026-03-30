@@ -11,60 +11,16 @@ function sortByDistance(locations: Location[]): Location[] {
   })
 }
 
-// Approximate coordinates spread around Halifax, UK (centre: 53.7212, -1.8584)
-const restaurantCoords: [number, number][] = [
-  [53.7228, -1.8601], [53.7195, -1.8620], [53.7180, -1.8540], [53.7240, -1.8550],
-  [53.7160, -1.8700], [53.7210, -1.8490], [53.7255, -1.8565], [53.7200, -1.8610],
-  [53.7220, -1.8590], [53.7185, -1.8575], [53.7232, -1.8620], [53.7150, -1.8520],
-  [53.7242, -1.8555], [53.7198, -1.8640], [53.7170, -1.8680], [53.7215, -1.8530],
-  [53.7238, -1.8608], [53.7205, -1.8562], [53.7222, -1.8580], [53.7190, -1.8595],
-]
+function toCoords(place: { lat?: number | null; lng?: number | null }): [number, number] | undefined {
+  if (place.lat != null && place.lng != null) return [place.lat, place.lng]
+  return undefined
+}
 
-const garageCoords: [number, number][] = [
-  [53.7142, -1.8820], [53.7168, -1.8760], [53.7252, -1.8710], [53.7130, -1.8650],
-  [53.7280, -1.8480], [53.7175, -1.8590], [53.7232, -1.8440], [53.7095, -1.8700],
-  [53.7155, -1.8510], [53.7262, -1.8630], [53.7118, -1.8575], [53.7145, -1.8820],
-  [53.7290, -1.8550], [53.7112, -1.8650], [53.7218, -1.8760], [53.7178, -1.8420],
-  [53.7085, -1.8540], [53.7235, -1.8680], [53.7198, -1.8780], [53.7158, -1.8460],
-]
+type RawPlace = { id: number; name: string; location: string; type: string; description: string; tags: string[]; lat?: number | null; lng?: number | null }
 
-const fuelCoords: [number, number][] = [
-  [53.7162, -1.8740], [53.7210, -1.8660], [53.7188, -1.8720], [53.7122, -1.8580],
-  [53.7245, -1.8500], [53.7178, -1.8430], [53.7095, -1.8620], [53.7258, -1.8680],
-  [53.7138, -1.8510], [53.7282, -1.8760], [53.7172, -1.8550], [53.7218, -1.8790],
-  [53.7105, -1.8670], [53.7265, -1.8440], [53.7148, -1.8810],
-]
-
-const shopCoords: [number, number][] = [
-  [53.7215, -1.8582], [53.7222, -1.8598], [53.7205, -1.8570], [53.7232, -1.8545],
-  [53.7178, -1.8650], [53.7195, -1.8612], [53.7168, -1.8762], [53.7242, -1.8525],
-  [53.7188, -1.8540], [53.7225, -1.8610], [53.7198, -1.8580], [53.7172, -1.8720],
-  [53.7155, -1.8690], [53.7238, -1.8560], [53.7212, -1.8535],
-]
-
-const medicalCoords: [number, number][] = [
-  [53.7145, -1.8620], [53.7202, -1.8595], [53.7168, -1.8648], [53.7218, -1.8570],
-  [53.7190, -1.8610], [53.7155, -1.8582], [53.7138, -1.8560], [53.7225, -1.8640],
-  [53.7112, -1.8700], [53.7235, -1.8530], [53.7178, -1.8555], [53.7208, -1.8625],
-  [53.7165, -1.8590], [53.7142, -1.8615], [53.7195, -1.8578], [53.7172, -1.8650],
-  [53.7175, -1.8655], [53.7188, -1.8570],
-]
-
-const accommodationCoords: [number, number][] = [
-  [53.6482, -1.8012], [53.7095, -1.8748], [53.7215, -1.8588], [53.7218, -1.8572],
-  [53.7202, -1.8610], [53.7098, -1.8750], [53.6495, -1.7958], [53.6485, -1.8015],
-  [53.7208, -1.8595], [53.7212, -1.8582], [53.7958, -1.7525], [53.7138, -1.8820],
-  [53.7945, -1.7512], [53.7325, -1.8658], [53.7952, -1.7518], [53.7158, -1.8892],
-  [53.7220, -1.8560], [53.7028, -1.7862], [53.7212, -1.8584],
-]
-
-const attractionCoords: [number, number][] = [
-  [53.7248, -1.8512], [53.7272, -1.8348], [53.7225, -1.8572], [53.7235, -1.8568],
-  [53.7142, -1.8620], [53.7268, -1.8352], [53.7218, -1.8588], [53.7140, -1.8618],
-  [53.7185, -1.8810], [53.7958, -1.7518], [53.7215, -1.8595], [53.7128, -1.8692],
-  [53.7958, -1.7515], [53.7210, -1.8580], [53.7335, -1.8895], [53.6788, -1.4852],
-  [53.7155, -1.8665], [53.7242, -1.8478], [53.7272, -1.8350], [53.7270, -1.8355],
-]
+function mapLocations(places: RawPlace[]): Location[] {
+  return places.map(l => ({ ...l, coords: toCoords(l) }))
+}
 
 export const categories: Category[] = [
   {
@@ -72,51 +28,48 @@ export const categories: Category[] = [
     label: 'Stay',
     icon: 'accommodation',
     color: '#b07d3a',
-    // SpareRoom (index 0) and Booking.com (index 1) are web links — no map pin
-    locations: sortByDistance(
-      rawData.accommodations.map((l, i) => i === 0 || i === 1 ? { ...l } : { ...l, coords: accommodationCoords[i <= 17 ? i - 2 : 17] })
-    ),
+    locations: sortByDistance(mapLocations(rawData.accommodations)),
   },
   {
     key: 'restaurants',
     label: 'Restaurants',
     icon: 'restaurant',
     color: '#e05a2b',
-    locations: sortByDistance(rawData.restaurants.map((l, i) => ({ ...l, coords: restaurantCoords[i] }))),
+    locations: sortByDistance(mapLocations(rawData.restaurants)),
   },
   {
     key: 'medical_facilities',
     label: 'Medical',
     icon: 'medical',
     color: '#e30413',
-    locations: sortByDistance(rawData.medical_facilities.map((l, i) => ({ ...l, coords: medicalCoords[i] }))),
+    locations: sortByDistance(mapLocations(rawData.medical_facilities)),
   },
   {
     key: 'things_to_do',
     label: 'Attractions',
     icon: 'attraction',
     color: '#c4916c',
-    locations: sortByDistance(rawData.things_to_do.map((l, i) => ({ ...l, coords: attractionCoords[i] }))),
+    locations: sortByDistance(mapLocations(rawData.things_to_do)),
   },
   {
     key: 'fuel_stations',
     label: 'Fuel',
     icon: 'fuel',
     color: '#5a9a3a',
-    locations: sortByDistance(rawData.fuel_stations.map((l, i) => ({ ...l, coords: fuelCoords[i] }))),
+    locations: sortByDistance(mapLocations(rawData.fuel_stations)),
   },
   {
     key: 'local_shops',
     label: 'Shops',
     icon: 'shop',
     color: '#8a5fad',
-    locations: sortByDistance(rawData.local_shops.map((l, i) => ({ ...l, coords: shopCoords[i] }))),
+    locations: sortByDistance(mapLocations(rawData.local_shops)),
   },
   {
     key: 'garages',
     label: 'Garages',
     icon: 'garage',
     color: '#3d8fad',
-    locations: sortByDistance(rawData.garages.map((l, i) => ({ ...l, coords: garageCoords[i] }))),
+    locations: sortByDistance(mapLocations(rawData.garages)),
   },
 ]

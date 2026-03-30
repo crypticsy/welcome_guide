@@ -10,7 +10,9 @@
         "Dine-in",
         "Grill",
         "Mediterranean"
-      ]
+      ],
+      "lat": 53.7077169,
+      "lng": -1.8582629
     },
     {
       "id": 2,
@@ -22,7 +24,9 @@
         "Takeaway",
         "Chinese",
         "Casual"
-      ]
+      ],
+      "lat": 53.7060618,
+      "lng": -1.8557407
     },
     {
       "id": 4,
@@ -34,7 +38,9 @@
         "Takeaway",
         "Burgers",
         "Fast Casual"
-      ]
+      ],
+      "lat": 53.7029788,
+      "lng": -1.862868
     },
     {
       "id": 5,
@@ -46,7 +52,9 @@
         "Pub Grub",
         "Family",
         "Dine-in"
-      ]
+      ],
+      "lat": 53.702161,
+      "lng": -1.854158
     },
     {
       "id": 6,
@@ -58,11 +66,13 @@
         "Pub",
         "British",
         "Bar"
-      ]
+      ],
+      "lat": 53.7222587,
+      "lng": -1.8588173
     },
     {
       "id": 7,
-      "name": "Seoul Food – Korean Kitchen",
+      "name": "Seoul Food \u2013 Korean Kitchen",
       "location": "https://maps.app.goo.gl/Y8DwyDXk7U28Li128",
       "type": "Korean",
       "description": "Authentic Korean street food, bibimbap and Korean fried chicken.",
@@ -70,7 +80,9 @@
         "Korean",
         "Street Food",
         "Dine-in"
-      ]
+      ],
+      "lat": 53.72182,
+      "lng": -1.8591574
     },
     {
       "id": 8,
@@ -82,11 +94,13 @@
         "Indian",
         "Bar",
         "Dine-in"
-      ]
+      ],
+      "lat": 53.7210574,
+      "lng": -1.8643208
     },
     {
       "id": 9,
-      "name": "All Pizzetto – Trattoria on George Square",
+      "name": "All Pizzetto \u2013 Trattoria on George Square",
       "location": "https://maps.app.goo.gl/TuspZX4N6evjmZNX6",
       "type": "Italian",
       "description": "Rustic Italian trattoria on George Square serving Neapolitan pizzas and pasta.",
@@ -94,19 +108,23 @@
         "Italian",
         "Pizza",
         "Dine-in"
-      ]
+      ],
+      "lat": 53.7224939,
+      "lng": -1.862581
     },
     {
       "id": 10,
       "name": "Baxters Sandwich Bar",
       "location": "https://maps.app.goo.gl/eKDpcH275MzekU798",
-      "type": "Café & Sandwiches",
-      "description": "Freshly made sandwiches and hot drinks — a popular local lunch spot.",
+      "type": "Caf\u00e9 & Sandwiches",
+      "description": "Freshly made sandwiches and hot drinks \u2014 a popular local lunch spot.",
       "tags": [
-        "Café",
+        "Caf\u00e9",
         "Sandwiches",
         "Quick Bite"
-      ]
+      ],
+      "lat": 53.706251,
+      "lng": -1.8558735
     },
     {
       "id": 11,
@@ -118,19 +136,23 @@
         "Bar",
         "Contemporary",
         "Dine-in"
-      ]
+      ],
+      "lat": 53.7243208,
+      "lng": -1.8600246
     },
     {
       "id": 12,
-      "name": "The Shay Café",
+      "name": "The Shay Caf\u00e9",
       "location": "https://maps.app.goo.gl/wvXzAMjYCMtsCEmV8",
-      "type": "Café",
-      "description": "Relaxed café at The Shay stadium serving breakfasts, light lunches and hot drinks.",
+      "type": "Caf\u00e9",
+      "description": "Relaxed caf\u00e9 at The Shay stadium serving breakfasts, light lunches and hot drinks.",
       "tags": [
-        "Café",
+        "Caf\u00e9",
         "Breakfast",
         "Stadium"
-      ]
+      ],
+      "lat": 53.7176192,
+      "lng": -1.8573424
     },
     {
       "id": 13,
@@ -142,7 +164,9 @@
         "Takeaway",
         "British",
         "Late Night"
-      ]
+      ],
+      "lat": 53.7176192,
+      "lng": -1.8573424
     },
     {
       "id": 14,
@@ -154,7 +178,9 @@
         "Indian",
         "Bar",
         "Award-winning"
-      ]
+      ],
+      "lat": 53.7237177,
+      "lng": -1.8601939
     },
     {
       "id": 15,
@@ -166,7 +192,9 @@
         "Brazilian",
         "Steak",
         "Buffet"
-      ]
+      ],
+      "lat": 53.7250063,
+      "lng": -1.8607128
     },
     {
       "id": 16,
@@ -178,7 +206,9 @@
         "Bar",
         "Cocktails",
         "Dine-in"
-      ]
+      ],
+      "lat": 53.7212974,
+      "lng": -1.8556549
     },
     {
       "id": 17,
@@ -190,7 +220,9 @@
         "Indian",
         "Balti",
         "Licensed"
-      ]
+      ],
+      "lat": 53.7157136,
+      "lng": -1.8802827
     },
     {
       "id": 18,
@@ -202,7 +234,9 @@
         "Italian",
         "Pasta",
         "Dine-in"
-      ]
+      ],
+      "lat": 53.7231575,
+      "lng": -1.8629894
     },
     {
       "id": 19,
@@ -214,19 +248,23 @@
         "Italian",
         "Family",
         "Dine-in"
-      ]
+      ],
+      "lat": 53.7146706,
+      "lng": -1.8859915
     },
     {
       "id": 20,
-      "name": "Café on t' Corner",
+      "name": "Caf\u00e9 on t' Corner",
       "location": "https://maps.app.goo.gl/JQjfnf5FeY7j9gec9",
-      "type": "Café",
-      "description": "Friendly corner café offering full English breakfasts, toasties and hot drinks.",
+      "type": "Caf\u00e9",
+      "description": "Friendly corner caf\u00e9 offering full English breakfasts, toasties and hot drinks.",
       "tags": [
-        "Café",
+        "Caf\u00e9",
         "Breakfast",
         "Casual"
-      ]
+      ],
+      "lat": 53.7030574,
+      "lng": -1.8629014
     }
   ],
   "garages": [
@@ -240,7 +278,9 @@
         "MOT",
         "Servicing",
         "Independent"
-      ]
+      ],
+      "lat": 53.7061538,
+      "lng": -1.8611671
     },
     {
       "id": 2,
@@ -252,7 +292,9 @@
         "Repairs",
         "Independent",
         "Local"
-      ]
+      ],
+      "lat": 53.7144427,
+      "lng": -1.8723248
     },
     {
       "id": 3,
@@ -264,7 +306,9 @@
         "MOT",
         "Tyres",
         "Servicing"
-      ]
+      ],
+      "lat": 53.719545,
+      "lng": -1.8657561
     },
     {
       "id": 4,
@@ -276,7 +320,9 @@
         "Diagnostics",
         "Repairs",
         "Modern"
-      ]
+      ],
+      "lat": 53.7100446,
+      "lng": -1.8545456
     },
     {
       "id": 5,
@@ -288,7 +334,9 @@
         "MOT",
         "Family-run",
         "Servicing"
-      ]
+      ],
+      "lat": 53.6851444,
+      "lng": -1.8597984
     },
     {
       "id": 6,
@@ -300,11 +348,13 @@
         "MOT",
         "Tyres",
         "Chain"
-      ]
+      ],
+      "lat": 53.7245718,
+      "lng": -1.855909
     },
     {
       "id": 7,
-      "name": "North Bridge Motors – EuroRepar Car Service",
+      "name": "North Bridge Motors \u2013 EuroRepar Car Service",
       "location": "https://maps.app.goo.gl/V1BTqfBWkVhXYf3d7",
       "type": "Franchise Service",
       "description": "Authorised EuroRepar service centre offering manufacturer-standard repairs.",
@@ -312,7 +362,9 @@
         "EuroRepar",
         "Franchise",
         "Servicing"
-      ]
+      ],
+      "lat": 53.727043,
+      "lng": -1.860192
     },
     {
       "id": 8,
@@ -324,7 +376,9 @@
         "All Makes",
         "MOT",
         "Independent"
-      ]
+      ],
+      "lat": 53.714958,
+      "lng": -1.873284
     },
     {
       "id": 9,
@@ -336,7 +390,9 @@
         "MOT",
         "Budget-friendly",
         "Central"
-      ]
+      ],
+      "lat": 53.7179392,
+      "lng": -1.8571253
     },
     {
       "id": 10,
@@ -348,7 +404,9 @@
         "MOT",
         "Servicing",
         "Testing"
-      ]
+      ],
+      "lat": 53.724598,
+      "lng": -1.8563533
     },
     {
       "id": 11,
@@ -360,7 +418,9 @@
         "Bodywork",
         "Electrical",
         "Repairs"
-      ]
+      ],
+      "lat": 53.724598,
+      "lng": -1.8563533
     },
     {
       "id": 12,
@@ -372,7 +432,9 @@
         "Independent",
         "Fair Pricing",
         "West Halifax"
-      ]
+      ],
+      "lat": 53.7159656,
+      "lng": -1.8557817
     },
     {
       "id": 13,
@@ -384,7 +446,9 @@
         "Storage",
         "Secure",
         "Workshop"
-      ]
+      ],
+      "lat": 53.7114095,
+      "lng": -1.8508415
     },
     {
       "id": 14,
@@ -396,7 +460,9 @@
         "Local",
         "MOT",
         "Servicing"
-      ]
+      ],
+      "lat": 53.7057267,
+      "lng": -1.8535227
     },
     {
       "id": 15,
@@ -408,7 +474,9 @@
         "Tuning",
         "ECU Remap",
         "Performance"
-      ]
+      ],
+      "lat": 53.7075648,
+      "lng": -1.8538881
     },
     {
       "id": 16,
@@ -420,7 +488,9 @@
         "MOT",
         "Central",
         "Tyres"
-      ]
+      ],
+      "lat": 53.688484,
+      "lng": -1.8552332
     },
     {
       "id": 17,
@@ -432,7 +502,9 @@
         "Fuel",
         "Servicing",
         "Combined"
-      ]
+      ],
+      "lat": 53.6863017,
+      "lng": -1.860051
     },
     {
       "id": 18,
@@ -444,7 +516,9 @@
         "Quick Turn",
         "Central",
         "Repairs"
-      ]
+      ],
+      "lat": 53.6868405,
+      "lng": -1.8543654
     },
     {
       "id": 19,
@@ -456,7 +530,9 @@
         "European",
         "Japanese",
         "Independent"
-      ]
+      ],
+      "lat": 53.6868405,
+      "lng": -1.8543654
     },
     {
       "id": 20,
@@ -468,13 +544,15 @@
         "Advanced Diagnostics",
         "Electrical",
         "All Makes"
-      ]
+      ],
+      "lat": 53.6999069,
+      "lng": -1.871672
     }
   ],
   "fuel_stations": [
     {
       "id": 1,
-      "name": "Esso – Halifax",
+      "name": "Esso \u2013 Halifax",
       "location": "https://maps.app.goo.gl/avww7jm3Bwy8qXBW9",
       "type": "Fuel Station",
       "description": "Esso forecourt with shop and air/water facilities.",
@@ -482,11 +560,13 @@
         "Esso",
         "Shop",
         "24hr"
-      ]
+      ],
+      "lat": 53.7181029,
+      "lng": -1.8599352
     },
     {
       "id": 2,
-      "name": "Shell – Halifax",
+      "name": "Shell \u2013 Halifax",
       "location": "https://maps.app.goo.gl/yXxwPZfmhMAuQZwc7",
       "type": "Fuel Station",
       "description": "Shell station with Select convenience store.",
@@ -494,7 +574,9 @@
         "Shell",
         "Shop",
         "Petrol & Diesel"
-      ]
+      ],
+      "lat": 53.702677,
+      "lng": -1.853486
     },
     {
       "id": 3,
@@ -506,7 +588,9 @@
         "Morrisons",
         "Budget",
         "Supermarket"
-      ]
+      ],
+      "lat": 53.6886946,
+      "lng": -1.8355422
     },
     {
       "id": 4,
@@ -518,11 +602,13 @@
         "JET",
         "Petrol & Diesel",
         "Independent"
-      ]
+      ],
+      "lat": 53.6837696,
+      "lng": -1.8619077
     },
     {
       "id": 5,
-      "name": "Shell – West Halifax",
+      "name": "Shell \u2013 West Halifax",
       "location": "https://maps.app.goo.gl/k8QNJA9iA3mDSede6",
       "type": "Fuel Station",
       "description": "Shell station on the west side of Halifax, open late.",
@@ -530,7 +616,9 @@
         "Shell",
         "Late Hours",
         "West Halifax"
-      ]
+      ],
+      "lat": 53.727404,
+      "lng": -1.875083
     },
     {
       "id": 6,
@@ -542,11 +630,13 @@
         "Sainsbury's",
         "Nectar",
         "Supermarket"
-      ]
+      ],
+      "lat": 53.7264743,
+      "lng": -1.8549904
     },
     {
       "id": 7,
-      "name": "The Kay Group – Pellon Lane Service Station (Shell)",
+      "name": "The Kay Group \u2013 Pellon Lane Service Station (Shell)",
       "location": "https://maps.app.goo.gl/k4BH7ibmRnERDBjd9",
       "type": "Fuel Station",
       "description": "Shell-branded service station on Pellon Lane with shop and car wash.",
@@ -554,23 +644,27 @@
         "Shell",
         "Car Wash",
         "Shop"
-      ]
+      ],
+      "lat": 53.7269118,
+      "lng": -1.8752705
     },
     {
       "id": 8,
-      "name": "BP – Halifax",
+      "name": "BP \u2013 Halifax",
       "location": "https://maps.app.goo.gl/WGaXLcEao1AH2H5D7",
       "type": "Fuel Station",
-      "description": "BP forecourt with M&S Food and Wild Bean Café.",
+      "description": "BP forecourt with M&S Food and Wild Bean Caf\u00e9.",
       "tags": [
         "BP",
         "M&S Food",
-        "Wild Bean Café"
-      ]
+        "Wild Bean Caf\u00e9"
+      ],
+      "lat": 53.73067,
+      "lng": -1.84341
     },
     {
       "id": 9,
-      "name": "Esso – Halifax Road",
+      "name": "Esso \u2013 Halifax Road",
       "location": "https://maps.app.goo.gl/WGaXLcEao1AH2H5D7",
       "type": "Fuel Station",
       "description": "Esso station on Halifax Road with convenience store and ATM.",
@@ -578,7 +672,9 @@
         "Esso",
         "ATM",
         "Convenience"
-      ]
+      ],
+      "lat": 53.73067,
+      "lng": -1.84341
     },
     {
       "id": 10,
@@ -590,7 +686,9 @@
         "Independent",
         "Petrol & Diesel",
         "Local"
-      ]
+      ],
+      "lat": 53.7191761,
+      "lng": -1.9065727
     },
     {
       "id": 11,
@@ -602,11 +700,13 @@
         "Asda",
         "Budget",
         "Supermarket"
-      ]
+      ],
+      "lat": 53.7180396,
+      "lng": -1.8599354
     },
     {
       "id": 12,
-      "name": "BP – East Halifax",
+      "name": "BP \u2013 East Halifax",
       "location": "https://maps.app.goo.gl/raLw6QFnFWzkwXzy9",
       "type": "Fuel Station",
       "description": "BP forecourt on the east side with 24-hour self-service pumps.",
@@ -614,11 +714,13 @@
         "BP",
         "24hr",
         "Self-service"
-      ]
+      ],
+      "lat": 53.7180396,
+      "lng": -1.8599354
     },
     {
       "id": 13,
-      "name": "Central Co-op – Birchencliffe",
+      "name": "Central Co-op \u2013 Birchencliffe",
       "location": "https://maps.app.goo.gl/jWn4J94bCJYcP8n56",
       "type": "Supermarket Fuel",
       "description": "Co-op forecourt with member discounts and a full supermarket on site.",
@@ -626,11 +728,13 @@
         "Co-op",
         "Members Discount",
         "Food & Fuel"
-      ]
+      ],
+      "lat": 53.6661535,
+      "lng": -1.8218386
     },
     {
       "id": 14,
-      "name": "Welcome Break – Fuel & Forecourt",
+      "name": "Welcome Break \u2013 Fuel & Forecourt",
       "location": "https://maps.app.goo.gl/FeBSw87oLp41N1mk6",
       "type": "Motorway Services",
       "description": "Welcome Break service area with fuel, food court and EV charging.",
@@ -638,7 +742,9 @@
         "Motorway",
         "EV Charging",
         "Food Court"
-      ]
+      ],
+      "lat": 53.7140908,
+      "lng": -1.7464804
     },
     {
       "id": 15,
@@ -650,7 +756,9 @@
         "Commercial",
         "HGV",
         "Bulk Fuel"
-      ]
+      ],
+      "lat": 53.6945852,
+      "lng": -1.8584319
     }
   ],
   "local_shops": [
@@ -664,7 +772,9 @@
         "Arcade",
         "Independent",
         "Town Centre"
-      ]
+      ],
+      "lat": 53.7215854,
+      "lng": -1.8592004
     },
     {
       "id": 2,
@@ -676,7 +786,9 @@
         "Convenience",
         "Essentials",
         "Local"
-      ]
+      ],
+      "lat": 53.7219405,
+      "lng": -1.8625578
     },
     {
       "id": 3,
@@ -688,7 +800,9 @@
         "Market",
         "Fresh Produce",
         "Historic"
-      ]
+      ],
+      "lat": 53.7220974,
+      "lng": -1.8595494
     },
     {
       "id": 4,
@@ -700,7 +814,9 @@
         "Department Store",
         "Gifts",
         "Clothing"
-      ]
+      ],
+      "lat": 53.7218093,
+      "lng": -1.8619428
     },
     {
       "id": 5,
@@ -712,7 +828,9 @@
         "Retail Park",
         "Free Parking",
         "Major Chains"
-      ]
+      ],
+      "lat": 53.7205398,
+      "lng": -1.8573227
     },
     {
       "id": 6,
@@ -724,7 +842,9 @@
         "24hr",
         "Convenience",
         "Late Night"
-      ]
+      ],
+      "lat": 53.7152756,
+      "lng": -1.8807688
     },
     {
       "id": 7,
@@ -736,7 +856,9 @@
         "Convenience",
         "Neighbourhood",
         "Bell Hall"
-      ]
+      ],
+      "lat": 53.7147827,
+      "lng": -1.8730513
     },
     {
       "id": 8,
@@ -748,11 +870,13 @@
         "One Stop",
         "Groceries",
         "Chain"
-      ]
+      ],
+      "lat": 53.7147757,
+      "lng": -1.8832039
     },
     {
       "id": 9,
-      "name": "WHSmith – Calderdale Royal Hospital",
+      "name": "WHSmith \u2013 Calderdale Royal Hospital",
       "location": "https://maps.app.goo.gl/fX7oKmrDEgcKWQ87A",
       "type": "Hospital Shop",
       "description": "WHSmith inside Calderdale Royal Hospital selling books, stationery and snacks.",
@@ -760,7 +884,9 @@
         "WHSmith",
         "Hospital",
         "Books & Snacks"
-      ]
+      ],
+      "lat": 53.7048735,
+      "lng": -1.8574652
     },
     {
       "id": 10,
@@ -772,7 +898,9 @@
         "Convenience",
         "North Halifax",
         "Essentials"
-      ]
+      ],
+      "lat": 53.7219405,
+      "lng": -1.8625578
     },
     {
       "id": 11,
@@ -784,7 +912,9 @@
         "International",
         "Groceries",
         "Independent"
-      ]
+      ],
+      "lat": 53.7174277,
+      "lng": -1.885372
     },
     {
       "id": 12,
@@ -796,7 +926,9 @@
         "Asda",
         "Supermarket",
         "Pharmacy"
-      ]
+      ],
+      "lat": 53.7248603,
+      "lng": -1.8882701
     },
     {
       "id": 13,
@@ -808,7 +940,9 @@
         "Discount",
         "Household",
         "Value"
-      ]
+      ],
+      "lat": 53.7249441,
+      "lng": -1.8678716
     },
     {
       "id": 14,
@@ -820,19 +954,23 @@
         "Tesco",
         "Meal Deals",
         "Clubcard"
-      ]
+      ],
+      "lat": 53.713025,
+      "lng": -1.8593661
     },
     {
       "id": 15,
       "name": "Cafexpress Shop",
       "location": "https://maps.app.goo.gl/MW3ggV3doevAadst8",
-      "type": "Café & Shop",
-      "description": "Hybrid café-shop selling hot drinks, sandwiches and everyday grocery items.",
+      "type": "Caf\u00e9 & Shop",
+      "description": "Hybrid caf\u00e9-shop selling hot drinks, sandwiches and everyday grocery items.",
       "tags": [
-        "Café",
+        "Caf\u00e9",
         "Groceries",
         "Quick Stop"
-      ]
+      ],
+      "lat": 53.7211006,
+      "lng": -1.8538007
     }
   ],
   "medical_facilities": [
@@ -846,7 +984,9 @@
         "A&E",
         "NHS",
         "24hr"
-      ]
+      ],
+      "lat": 53.7056695,
+      "lng": -1.8588983
     },
     {
       "id": 2,
@@ -858,7 +998,9 @@
         "GP",
         "NHS",
         "Appointments"
-      ]
+      ],
+      "lat": 53.7173235,
+      "lng": -1.8684965
     },
     {
       "id": 3,
@@ -870,7 +1012,9 @@
         "Pharmacy",
         "Prescriptions",
         "Siddal"
-      ]
+      ],
+      "lat": 53.7060166,
+      "lng": -1.8490657
     },
     {
       "id": 4,
@@ -882,7 +1026,9 @@
         "Walk-in",
         "NHS",
         "No Appointment"
-      ]
+      ],
+      "lat": 53.7253511,
+      "lng": -1.8600737
     },
     {
       "id": 5,
@@ -894,7 +1040,9 @@
         "Pharmacy",
         "OTC",
         "Local"
-      ]
+      ],
+      "lat": 53.7127143,
+      "lng": -1.8682981
     },
     {
       "id": 6,
@@ -906,7 +1054,9 @@
         "GP",
         "NHS",
         "Multi-doctor"
-      ]
+      ],
+      "lat": 53.7438849,
+      "lng": -1.8822249
     },
     {
       "id": 7,
@@ -918,7 +1068,9 @@
         "Dental",
         "NHS & Private",
         "Skircoat"
-      ]
+      ],
+      "lat": 53.7036114,
+      "lng": -1.862972
     },
     {
       "id": 8,
@@ -930,7 +1082,9 @@
         "GP",
         "Group Practice",
         "NHS"
-      ]
+      ],
+      "lat": 53.7296457,
+      "lng": -1.8946235
     },
     {
       "id": 9,
@@ -942,19 +1096,23 @@
         "GP",
         "NHS",
         "Medical Centre"
-      ]
+      ],
+      "lat": 53.6844521,
+      "lng": -1.8606485
     },
     {
       "id": 10,
-      "name": "Just Health – Driver Medical Clinic",
+      "name": "Just Health \u2013 Driver Medical Clinic",
       "location": "https://maps.app.goo.gl/WuTFjTyoaPxFgnSQA",
       "type": "Occupational Health",
-      "description": "Driver medical assessments for HGV, bus and taxi licences — fast appointments available.",
+      "description": "Driver medical assessments for HGV, bus and taxi licences \u2014 fast appointments available.",
       "tags": [
         "Driver Medical",
         "HGV",
         "Occupational"
-      ]
+      ],
+      "lat": 53.7192744,
+      "lng": -1.9018716
     },
     {
       "id": 11,
@@ -966,19 +1124,9 @@
         "NHS",
         "Multi-service",
         "Horne Street"
-      ]
-    },
-    {
-      "id": 12,
-      "name": "The Wellcome Practice",
-      "location": "https://maps.app.goo.gl/DWRPmZqheamVujDp6",
-      "type": "GP Surgery",
-      "description": "Friendly NHS GP surgery with online booking and extended hours appointments.",
-      "tags": [
-        "GP",
-        "NHS",
-        "Online Booking"
-      ]
+      ],
+      "lat": 53.7250799,
+      "lng": -1.8717973
     },
     {
       "id": 13,
@@ -990,19 +1138,9 @@
         "GP",
         "NHS",
         "Established"
-      ]
-    },
-    {
-      "id": 14,
-      "name": "Lowfield Medical Centre",
-      "location": "https://maps.app.goo.gl/82r5zaD3nwS8s67h9",
-      "type": "GP Surgery",
-      "description": "NHS medical centre in Lowfield offering GP consultations, nursing and minor procedures.",
-      "tags": [
-        "GP",
-        "NHS",
-        "Minor Procedures"
-      ]
+      ],
+      "lat": 53.7148926,
+      "lng": -1.8714303
     },
     {
       "id": 15,
@@ -1014,7 +1152,9 @@
         "Pharmacy",
         "Prescriptions",
         "Boulevard"
-      ]
+      ],
+      "lat": 53.7170871,
+      "lng": -1.868515
     },
     {
       "id": 16,
@@ -1026,7 +1166,9 @@
         "GP",
         "NHS",
         "King Cross"
-      ]
+      ],
+      "lat": 53.7154286,
+      "lng": -1.8801864
     },
     {
       "id": 17,
@@ -1038,7 +1180,9 @@
         "Pharmacy",
         "Same-day",
         "King Cross"
-      ]
+      ],
+      "lat": 53.7154476,
+      "lng": -1.8810275
     },
     {
       "id": 18,
@@ -1050,7 +1194,9 @@
         "Pharmacy",
         "Independent",
         "Dispensing"
-      ]
+      ],
+      "lat": 53.7258389,
+      "lng": -1.8094768
     }
   ],
   "things_to_do": [
@@ -1064,19 +1210,23 @@
         "Family",
         "Interactive",
         "Award-winning"
-      ]
+      ],
+      "lat": 53.720069,
+      "lng": -1.8548686
     },
     {
       "id": 2,
       "name": "Shibden Hall",
       "location": "https://maps.app.goo.gl/DYh7VGjAzWbq4aq8A",
       "type": "Historic House",
-      "description": "15th-century half-timbered manor house set in landscaped parkland — home of Anne Lister.",
+      "description": "15th-century half-timbered manor house set in landscaped parkland \u2014 home of Anne Lister.",
       "tags": [
         "Historic",
         "Heritage",
         "Grounds"
-      ]
+      ],
+      "lat": 53.7281001,
+      "lng": -1.8399398
     },
     {
       "id": 3,
@@ -1088,7 +1238,9 @@
         "Free Entry",
         "Art",
         "Textiles"
-      ]
+      ],
+      "lat": 53.732601,
+      "lng": -1.863295
     },
     {
       "id": 4,
@@ -1100,19 +1252,23 @@
         "Free",
         "Victorian",
         "Gardens"
-      ]
+      ],
+      "lat": 53.7202139,
+      "lng": -1.8720359
     },
     {
       "id": 5,
       "name": "Manor Heath Park",
       "location": "https://maps.app.goo.gl/3b8bfbXUb6ot3XwR8",
       "type": "Park",
-      "description": "Woodland park with a jungle experience, walled garden and café — popular with families.",
+      "description": "Woodland park with a jungle experience, walled garden and caf\u00e9 \u2014 popular with families.",
       "tags": [
         "Family",
         "Woodland",
-        "Café"
-      ]
+        "Caf\u00e9"
+      ],
+      "lat": 53.707225,
+      "lng": -1.8656065
     },
     {
       "id": 6,
@@ -1124,7 +1280,9 @@
         "Country Park",
         "Lake",
         "Boating"
-      ]
+      ],
+      "lat": 53.7287434,
+      "lng": -1.8401368
     },
     {
       "id": 7,
@@ -1136,7 +1294,9 @@
         "Heritage",
         "Shopping",
         "Events"
-      ]
+      ],
+      "lat": 53.7219432,
+      "lng": -1.856919
     },
     {
       "id": 8,
@@ -1148,7 +1308,9 @@
         "Family",
         "Tropical",
         "Free"
-      ]
+      ],
+      "lat": 53.7073957,
+      "lng": -1.8670023
     },
     {
       "id": 9,
@@ -1160,7 +1322,9 @@
         "Local History",
         "Community",
         "Free"
-      ]
+      ],
+      "lat": 53.7198347,
+      "lng": -1.9139506
     },
     {
       "id": 10,
@@ -1172,7 +1336,9 @@
         "Industrial",
         "Steam",
         "Free"
-      ]
+      ],
+      "lat": 53.8109836,
+      "lng": -1.7222145
     },
     {
       "id": 11,
@@ -1184,7 +1350,9 @@
         "Industrial",
         "Heritage",
         "Local"
-      ]
+      ],
+      "lat": 53.722234,
+      "lng": -1.8561389
     },
     {
       "id": 12,
@@ -1196,7 +1364,9 @@
         "Wildlife",
         "Walking",
         "Free"
-      ]
+      ],
+      "lat": 53.6971686,
+      "lng": -1.813876
     },
     {
       "id": 13,
@@ -1208,19 +1378,23 @@
         "Historic",
         "Architecture",
         "Free"
-      ]
+      ],
+      "lat": 53.7954623,
+      "lng": -1.7476307
     },
     {
       "id": 14,
       "name": "The Escapatorium",
       "location": "https://maps.app.goo.gl/RSJWQSd7k6pnD44w9",
       "type": "Escape Room",
-      "description": "Immersive escape room experiences for teams — great for an evening out.",
+      "description": "Immersive escape room experiences for teams \u2014 great for an evening out.",
       "tags": [
         "Group Activity",
         "Evening Out",
         "Bookable"
-      ]
+      ],
+      "lat": 53.7224328,
+      "lng": -1.8555369
     },
     {
       "id": 15,
@@ -1232,7 +1406,9 @@
         "Walking",
         "Cycling",
         "Moors"
-      ]
+      ],
+      "lat": 53.7749126,
+      "lng": -1.9103057
     },
     {
       "id": 16,
@@ -1244,7 +1420,9 @@
         "Medieval",
         "Views",
         "Free"
-      ]
+      ],
+      "lat": 53.6585292,
+      "lng": -1.4905625
     },
     {
       "id": 17,
@@ -1256,7 +1434,9 @@
         "Moor",
         "Sports",
         "Open Space"
-      ]
+      ],
+      "lat": 53.7108028,
+      "lng": -1.8729104
     },
     {
       "id": 18,
@@ -1268,19 +1448,23 @@
         "Victorian",
         "Play Area",
         "Free"
-      ]
+      ],
+      "lat": 53.7316185,
+      "lng": -1.8631229
     },
     {
       "id": 19,
       "name": "Shibden Park Miniature Railway",
       "location": "https://maps.app.goo.gl/StB2shieaMK4jDdL9",
       "type": "Attraction",
-      "description": "Charming miniature steam railway running through Shibden Park — loved by children and adults.",
+      "description": "Charming miniature steam railway running through Shibden Park \u2014 loved by children and adults.",
       "tags": [
         "Family",
         "Steam Train",
         "Seasonal"
-      ]
+      ],
+      "lat": 53.7308411,
+      "lng": -1.8360843
     },
     {
       "id": 20,
@@ -1292,13 +1476,15 @@
         "Walking",
         "Lake",
         "Free"
-      ]
+      ],
+      "lat": 53.7242983,
+      "lng": -1.8452415
     }
   ],
   "accommodations": [
     {
       "id": 17,
-      "name": "SpareRoom – Halifax Flatshares",
+      "name": "SpareRoom \u2013 Halifax Flatshares",
       "location": "https://www.spareroom.co.uk/flatshare/halifax",
       "type": "Room Rental",
       "description": "Search available rooms, flatshares and house shares for rent across Halifax and the surrounding area.",
@@ -1306,11 +1492,13 @@
         "Room Rental",
         "Flatshare",
         "Long Stay"
-      ]
+      ],
+      "lat": null,
+      "lng": null
     },
     {
       "id": 19,
-      "name": "Booking.com – Halifax Hotels",
+      "name": "Booking.com \u2013 Halifax Hotels",
       "location": "https://www.booking.com/searchresults/en-gb/region/gb/halifax.html",
       "type": "Online Search",
       "description": "Browse and compare all available hotels, B&Bs and serviced apartments in Halifax on Booking.com.",
@@ -1318,43 +1506,51 @@
         "Booking.com",
         "Compare",
         "All Types"
-      ]
+      ],
+      "lat": null,
+      "lng": null
     },
     {
       "id": 1,
       "name": "Premier Inn Huddersfield North",
-      "location": "https://maps.app.goo.gl/vir7mw4dLLK3DeMs8",
+      "location": "https://maps.app.goo.gl/tisBvTnDYLi7yAYN9",
       "type": "Budget Hotel",
       "description": "Reliable Premier Inn on the north side of Huddersfield, about 15 minutes from Halifax.",
       "tags": [
         "Premier Inn",
         "Budget",
         "Parking"
-      ]
+      ],
+      "lat": 53.6922617,
+      "lng": -1.7433539
     },
     {
       "id": 2,
       "name": "Premier Inn Halifax South",
-      "location": "https://maps.app.goo.gl/bsDyLWGAVq3Wbmsn7",
+      "location": "https://maps.app.goo.gl/W2uh8BXysmQ2MYYr8",
       "type": "Budget Hotel",
       "description": "Conveniently located Premier Inn on the southern approach to Halifax with free parking.",
       "tags": [
         "Premier Inn",
         "Budget",
         "Free Parking"
-      ]
+      ],
+      "lat": 53.7016686,
+      "lng": -1.8551696
     },
     {
       "id": 3,
       "name": "The Imperial Crown Hotel",
-      "location": "https://maps.app.goo.gl/kk3jYVUnEZBCzVsQA",
+      "location": "https://maps.app.goo.gl/zkepQcud3UnumrPGA",
       "type": "Boutique Hotel",
       "description": "Historic hotel in a Victorian building in Halifax town centre with a bar and restaurant.",
       "tags": [
         "Boutique",
         "Historic",
         "Bar & Restaurant"
-      ]
+      ],
+      "lat": 53.7212637,
+      "lng": -1.8557265
     },
     {
       "id": 4,
@@ -1366,7 +1562,9 @@
         "Premier Inn",
         "Budget",
         "Town Centre"
-      ]
+      ],
+      "lat": 53.725274,
+      "lng": -1.861431
     },
     {
       "id": 5,
@@ -1378,7 +1576,9 @@
         "Travelodge",
         "Budget",
         "Value"
-      ]
+      ],
+      "lat": 53.7292135,
+      "lng": -1.8676402
     },
     {
       "id": 6,
@@ -1390,7 +1590,9 @@
         "Premier Inn",
         "Budget",
         "Road Links"
-      ]
+      ],
+      "lat": 53.7016459,
+      "lng": -1.8550159
     },
     {
       "id": 7,
@@ -1402,7 +1604,9 @@
         "4-Star",
         "Leisure",
         "Fine Dining"
-      ]
+      ],
+      "lat": 53.6704127,
+      "lng": -1.8288417
     },
     {
       "id": 8,
@@ -1414,7 +1618,9 @@
         "Premier Inn",
         "Budget",
         "Restaurant"
-      ]
+      ],
+      "lat": 53.6923027,
+      "lng": -1.7429805
     },
     {
       "id": 9,
@@ -1426,7 +1632,9 @@
         "Traditional",
         "Bar",
         "Halifax"
-      ]
+      ],
+      "lat": 53.723757,
+      "lng": -1.8606978
     },
     {
       "id": 10,
@@ -1438,7 +1646,9 @@
         "Boutique",
         "Converted",
         "Town Centre"
-      ]
+      ],
+      "lat": 53.7243592,
+      "lng": -1.8562678
     },
     {
       "id": 11,
@@ -1450,7 +1660,9 @@
         "Days Inn",
         "Motorway",
         "Budget"
-      ]
+      ],
+      "lat": 53.7126343,
+      "lng": -1.7469038
     },
     {
       "id": 12,
@@ -1462,7 +1674,9 @@
         "Pub Rooms",
         "Cosy",
         "Home Cooked"
-      ]
+      ],
+      "lat": 53.7002553,
+      "lng": -1.9127579
     },
     {
       "id": 13,
@@ -1474,7 +1688,9 @@
         "4-Star",
         "Modern",
         "Bradford"
-      ]
+      ],
+      "lat": 53.7930567,
+      "lng": -1.7573928
     },
     {
       "id": 14,
@@ -1486,7 +1702,9 @@
         "Country House",
         "Award-winning",
         "Fine Dining"
-      ]
+      ],
+      "lat": 53.7581022,
+      "lng": -1.8753155
     },
     {
       "id": 15,
@@ -1498,7 +1716,9 @@
         "4-Star",
         "Spa",
         "Bradford"
-      ]
+      ],
+      "lat": 53.7702198,
+      "lng": -1.7515027
     },
     {
       "id": 16,
@@ -1510,11 +1730,13 @@
         "Country",
         "Rural",
         "Relaxed"
-      ]
+      ],
+      "lat": 53.7051059,
+      "lng": -1.7887229
     },
     {
       "id": 18,
-      "name": "Holiday Inn Leeds–Brighouse",
+      "name": "Holiday Inn Leeds\u2013Brighouse",
       "location": "https://maps.app.goo.gl/BiH3ZNenfCxKHgfD8",
       "type": "4-Star Hotel",
       "description": "Holiday Inn between Leeds and Halifax at Brighouse, with pool, gym and full-service restaurant.",
@@ -1522,7 +1744,9 @@
         "Holiday Inn",
         "Pool & Gym",
         "Brighouse"
-      ]
+      ],
+      "lat": 53.6988677,
+      "lng": -1.7604167
     }
   ]
 }

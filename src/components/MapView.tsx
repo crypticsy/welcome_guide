@@ -166,10 +166,10 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
           center={OFFICE.coords}
           radius={220}
           pathOptions={{
-            color: '#ffe900',
+            color: '#22c55e',
             weight: 2.5,
             opacity: 0.9,
-            fillColor: '#ffe900',
+            fillColor: '#22c55e',
             fillOpacity: 0.06,
             dashArray: '6 4',
           }}
