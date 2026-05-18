@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css'
 import type { Category, Location } from '../types'
 import { OFFICE } from '../constants'
 import { haversineKm, formatKm, directionsUrl } from '../utils/distance'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)._getIconUrl
 L.Icon.Default.mergeOptions({
@@ -41,20 +42,9 @@ function createMarkerIcon(color: string, index: number, isSelected: boolean): L.
   })
 }
 
-// Permanently disables all map interaction — users can only click markers
-function MapLock() {
+function MapRefSetter({ mapRef }: { mapRef: React.MutableRefObject<L.Map | null> }) {
   const map = useMap()
-  useEffect(() => {
-    map.dragging.disable()
-    map.scrollWheelZoom.disable()
-    map.doubleClickZoom.disable()
-    map.touchZoom.disable()
-    map.boxZoom.disable()
-    map.keyboard.disable()
-    if ((map as unknown as Record<string, unknown>).tap) {
-      (map as unknown as Record<string, { disable(): void }>).tap.disable()
-    }
-  }, [map])
+  useEffect(() => { mapRef.current = map }, [map, mapRef])
   return null
 }
 
@@ -134,6 +124,8 @@ interface Props {
 export default function MapView({ category, selectedLocation, onMarkerClick }: Props) {
   const allCoords  = category.locations.flatMap((l) => (l.coords ? [l.coords] : []))
   const markerRefs = useRef<Map<number, L.Marker>>(new Map())
+  const mapRef     = useRef<L.Map | null>(null)
+  const isMobile   = useIsMobile()
 
   // Clear refs when category changes
   useEffect(() => {
@@ -147,19 +139,13 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
         zoom={13}
         style={{ height: '100%', width: '100%' }}
         zoomControl={false}
-        dragging={false}
-        scrollWheelZoom={false}
-        doubleClickZoom={false}
-        touchZoom={false}
-        boxZoom={false}
-        keyboard={false}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         />
 
-        <MapLock />
+        <MapRefSetter mapRef={mapRef} />
 
         {/* CRH / Site Office boundary */}
         <Circle
@@ -349,6 +335,54 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
           </Popup>
         </Marker>
       </MapContainer>
+
+      {/* Zoom controls */}
+      <div style={{
+        position: 'absolute',
+        bottom: isMobile ? 174 : 32,
+        right: 16,
+        zIndex: 1000,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 4,
+      }}>
+        {(['+', '−'] as const).map((label) => (
+          <button
+            key={label}
+            onClick={() => label === '+' ? mapRef.current?.zoomIn() : mapRef.current?.zoomOut()}
+            style={{
+              width: 36,
+              height: 36,
+              border: '1px solid var(--border)',
+              borderRadius: 8,
+              background: 'rgba(253,248,241,0.92)',
+              backdropFilter: 'blur(14px)',
+              WebkitBackdropFilter: 'blur(14px)',
+              boxShadow: '0 2px 12px rgba(28,21,16,0.10)',
+              cursor: 'pointer',
+              fontSize: 20,
+              fontWeight: 300,
+              color: 'var(--text-2)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontFamily: 'var(--font-body)',
+              lineHeight: 1,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(245,237,224,0.98)'
+              e.currentTarget.style.color = 'var(--text)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(253,248,241,0.92)'
+              e.currentTarget.style.color = 'var(--text-2)'
+            }}
+            aria-label={label === '+' ? 'Zoom in' : 'Zoom out'}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
 
       {/* Floating category pill */}
       <div style={{
