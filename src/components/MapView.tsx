@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, Circle, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
@@ -15,6 +15,23 @@ L.Icon.Default.mergeOptions({
 })
 
 const SELECTED_COLOR = '#e30413'
+
+const BASEMAPS = {
+  minimal: {
+    label: 'Minimal',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Esri, DeLorme, NAVTEQ',
+    maxZoom: 16,
+  },
+  streets: {
+    label: 'Streets',
+    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19,
+  },
+} as const
+
+type BasemapKey = keyof typeof BASEMAPS
 
 function createMarkerIcon(color: string, index: number, isSelected: boolean): L.DivIcon {
   const bg     = isSelected ? SELECTED_COLOR : color + 'dd'
@@ -126,6 +143,8 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
   const markerRefs = useRef<Map<number, L.Marker>>(new Map())
   const mapRef     = useRef<L.Map | null>(null)
   const isMobile   = useIsMobile()
+  const [basemap, setBasemap] = useState<BasemapKey>('minimal')
+  const tiles = BASEMAPS[basemap]
 
   // Clear refs when category changes
   useEffect(() => {
@@ -141,8 +160,10 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
         zoomControl={false}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          key={basemap}
+          attribution={tiles.attribution}
+          url={tiles.url}
+          maxZoom={tiles.maxZoom}
         />
 
         <MapRefSetter mapRef={mapRef} />
@@ -335,6 +356,49 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
           </Popup>
         </Marker>
       </MapContainer>
+
+      {/* Basemap switcher */}
+      <div style={{
+        position: 'absolute',
+        top: 16,
+        left: 16,
+        zIndex: 1000,
+        display: 'flex',
+        gap: 2,
+        padding: 3,
+        borderRadius: 10,
+        background: 'rgba(253,248,241,0.92)',
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
+        border: '1px solid var(--border)',
+        boxShadow: '0 2px 12px rgba(28,21,16,0.10)',
+      }}>
+        {(Object.keys(BASEMAPS) as BasemapKey[]).map((key) => {
+          const active = key === basemap
+          return (
+            <button
+              key={key}
+              onClick={() => setBasemap(key)}
+              style={{
+                border: 'none',
+                borderRadius: 7,
+                padding: '6px 12px',
+                cursor: 'pointer',
+                fontFamily: 'var(--font-body)',
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: '0.2px',
+                color: active ? 'var(--text)' : 'var(--text-2)',
+                background: active ? 'rgba(245,237,224,0.98)' : 'transparent',
+                boxShadow: active ? 'inset 0 0 0 1px var(--border)' : 'none',
+              }}
+              aria-pressed={active}
+            >
+              {BASEMAPS[key].label}
+            </button>
+          )
+        })}
+      </div>
 
       {/* Zoom controls */}
       <div style={{
