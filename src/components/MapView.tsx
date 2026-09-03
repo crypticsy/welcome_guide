@@ -403,7 +403,7 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
       {/* Zoom controls */}
       <div style={{
         position: 'absolute',
-        bottom: isMobile ? 174 : 32,
+        bottom: isMobile ? 218 : 32,
         right: 16,
         zIndex: 1000,
         display: 'flex',
@@ -465,6 +465,42 @@ export default function MapView({ category, selectedLocation, onMarkerClick }: P
         <span style={{ fontFamily: "'Century Gothic', CenturyGothic, AppleGothic, sans-serif", fontSize: 11, fontWeight: 600, color: category.color }}>
           {category.locations.length} locations
         </span>
+      </div>
+
+      {/* Map disclaimer */}
+      <div style={{
+        position: 'absolute',
+        bottom: isMobile ? 166 : 14,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 1000,
+        background: 'rgba(253,248,241,0.92)',
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
+        borderRadius: 16,
+        padding: isMobile ? '6px 12px' : '6px 18px',
+        boxShadow: '0 2px 12px rgba(28,21,16,0.08)',
+        border: '1px solid var(--border)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        pointerEvents: 'none',
+        maxWidth: isMobile ? 'calc(100% - 24px)' : 'calc(100% - 240px)',
+        width: isMobile ? 'calc(100% - 24px)' : 'max-content',
+        boxSizing: 'border-box',
+      }}>
+        <p style={{
+          margin: 0,
+          fontFamily: 'var(--font-body)',
+          fontSize: isMobile ? 10 : 11,
+          fontWeight: 400,
+          color: 'var(--text-2)',
+          lineHeight: 1.4,
+          letterSpacing: '0.1px',
+        }}>
+          Laing O’Rourke does not endorse/advise any of the contents on the map. Please carry your own diligence before you plan.
+        </p>
       </div>
     </div>
   )

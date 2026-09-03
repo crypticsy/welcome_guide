@@ -121,7 +121,7 @@ export default function App() {
             bottom: 0,
             left: 0,
             right: 0,
-            zIndex: 500,
+            zIndex: 1200,
             background: 'var(--bg-card)',
             borderRadius: '20px 20px 0 0',
             boxShadow: '0 -4px 32px rgba(28, 21, 16, 0.14)',
